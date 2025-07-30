@@ -1,68 +1,52 @@
 class Matrix:
-    def __init__(self, data):
-        self.data = data
-        self.rows = len(data)
-        self.cols = len(data[0]) if data else 0
+    def __init__(self, values):
+        self.values = [row[:] for row in values]
+        self.rows = len(values)
+        self.cols = len(values[0]) if values else 0
 
-    def to_row_echelon_form(self):
-        matrix = [row[:] for row in self.data]  # Copie de la matrice
+    def rref(self):
+        A = self.values
         lead = 0
+        rowCount = self.rows
+        columnCount = self.cols
 
-        for r in range(self.rows):
-            if lead >= self.cols:
+        for r in range(rowCount):
+            if lead >= columnCount:
                 break
-
             i = r
-            while i < self.rows and matrix[i][lead] == 0:
+            while abs(A[i][lead]) < 1e-9:
                 i += 1
-            if i == self.rows:
-                lead += 1
-                if lead == self.cols:
-                    break
-                r -= 1  # Reste sur la même ligne
-                continue
-
-            # Échange la ligne i avec la ligne r
-            matrix[i], matrix[r] = matrix[r], matrix[i]
-
-            # Normalise la ligne r
-            lv = matrix[r][lead]
-            if lv != 0:
-                matrix[r] = [x / lv for x in matrix[r]]
-
-            # Élimine les éléments en dessous du pivot
-            for i in range(r + 1, self.rows):
-                lv = matrix[i][lead]
-                matrix[i] = [
-                    iv - lv * rv for rv, iv in zip(matrix[r], matrix[i])
-                ]
-
+                if i == rowCount:
+                    i = r
+                    lead += 1
+                    if columnCount == lead:
+                        return
+            A[r], A[i] = A[i], A[r]
+            lv = A[r][lead]
+            A[r] = [mrx / lv for mrx in A[r]]
+            for i in range(rowCount):
+                if i != r:
+                    lv = A[i][lead]
+                    A[i] = [iv - lv * rv for rv, iv in zip(A[r], A[i])]
             lead += 1
 
-        return Matrix(matrix)
-
     def display(self):
-        for row in self.data:
-            print(["{:.2f}".format(x) for x in row])
-        print()
+        for row in self.values:
+            print(["{:.7f}".format(val) for val in row])
 
 
 def main():
-    # Exemple de matrice à transformer
-    data = [
-        [0, 0, 5, 1],
-        [0, 0, 0, 0],
-        [3, 6, 9, 0]
-    ]
-
-    print("Matrice initiale :")
-    matrix = Matrix(data)
+    matrix = Matrix([
+        [8., 5., -2., 4., 28.],
+        [4., 2.5, 20., 4., -4.],
+        [8., 5., 1., 4., 17.]
+    ])
+    print("Matrice originale :")
     matrix.display()
 
-    ref = matrix.to_row_echelon_form()
-
-    print("Forme échelonnée (Row-Echelon Form) :")
-    ref.display()
+    matrix.rref()
+    print("\nForme échelonnée réduite (RREF) :")
+    matrix.display()
 
 
 if __name__ == "__main__":
