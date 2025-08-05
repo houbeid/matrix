@@ -26,7 +26,6 @@ def linear_combination(vectors: List[Vector], scalars: List[float]) -> Vector:
     for v, λ in zip(vectors, scalars):
         for i in range(dim):
             result[i] = math.fma(λ, v[i], result[i])  # fused multiply-add
-
     return Vector(result)
 
 
