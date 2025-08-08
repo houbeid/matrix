@@ -19,8 +19,7 @@ def lerp_matrix(u: List[List[Number]], v: List[List[Number]], t: float) -> List[
         for i in range(len(u))
     ]
 
-
-if __name__ == "__main__":
+def main():
     print(lerp_value(0., 1., 0.)) 
     print(lerp_value(0., 1., 1.)) 
     print(lerp_value(0., 1., 0.5))
@@ -35,3 +34,6 @@ if __name__ == "__main__":
     result = lerp_matrix(u_mat, v_mat, 0.5)
     for row in result:
         print(row)
+
+if __name__ == "__main__":
+   main()

@@ -27,7 +27,10 @@ def cross_product(u: Vector, v: Vector) -> Vector:
     return Vector([x, y, z])
 
 
-# 🔹 Exemples
-u = Vector([1., 2., 3.])
-v = Vector([4., 5., 6.])
-print(cross_product(u, v))
+def main():
+    u = Vector([1., 2., 3.])
+    v = Vector([4., 5., 6.])
+    print(cross_product(u, v))
+    
+if __name__ == "__main__":
+    main()

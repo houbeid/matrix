@@ -22,7 +22,9 @@ def dot_product(u: Vector, v: Vector) -> float:
     for a, b in zip(u, v):
         result = math.fma(a, b, result)
     return result
-if __name__ == "__main__":
+def main():
     u = Vector([1.0, 3.0, -5.0])
     v = Vector([4.0, -2.0, -1.0])
     print("// ", dot_product(u, v))
+if __name__ == "__main__":
+    main()

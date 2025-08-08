@@ -38,10 +38,12 @@ class Vector:
             max_val = max(max_val, val)
         return max_val
 
-
-if __name__ == "__main__":
+def main():
     v = Vector([3.0, -4.0, 2.0])
     print("// ", v.norm_1())
     print("// ", v.norm_2())
     print("// ", v.norm_inf())
+
+if __name__ == "__main__":
+    main()
 

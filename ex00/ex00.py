@@ -46,8 +46,7 @@ class Matrix:
     
     def __str__(self):
         return '\n'.join(str(row) for row in self.data)
-
-if __name__ == "__main__":
+def main():
     print("=== Vecteurs ===")
     u = Vector([2.0, 3.0])
     v = Vector([5.0, 7.0])
@@ -78,3 +77,8 @@ if __name__ == "__main__":
     # u.scl(2.0)
     
     # print(u)
+
+        
+
+if __name__ == "__main__":
+    main()

@@ -30,7 +30,9 @@ class Matrix:
 
     def __str__(self):
         return "\n".join(str(row) for row in self.values)
-u = Matrix([
+    
+def main():
+    u = Matrix([
     [1., 0.],
     [0., 1.]
 ])
@@ -82,3 +84,6 @@ v = Matrix([
     [4., 2.]
 ])
 print(u.mul_mat(v))
+
+if __name__ == "__main__":
+    main()
