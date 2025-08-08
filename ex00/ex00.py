@@ -47,37 +47,34 @@ class Matrix:
     def __str__(self):
         return '\n'.join(str(row) for row in self.data)
 
-# === Exemple d'utilisation (main) ===
 if __name__ == "__main__":
     print("=== Vecteurs ===")
     u = Vector([2.0, 3.0])
     v = Vector([5.0, 7.0])
     u.add(v)
-    print("Addition :", u)  # [7.0], [10.0]
+    print("// ", u) 
 
-    u = Vector([2.0, 3.0])
-    v = Vector([5.0, 7.0])
-    u.sub(v)
-    print("Soustraction :", u)  # [-3.0], [-4.0]
+    # u = Vector([2.0, 3.0])
+    # v = Vector([5.0, 7.0])
+    # u.sub(v)
+    # print("// ", u) 
 
-    u = Vector([2.0, 3.0])
-    u.scl(2.0)
-    print("Scaling :", u)  # [4.0], [6.0]
+    # u = Vector([2.0, 3.0])
+    # u.scl(2.0)
+    # print("// ", u) 
 
     print("\n=== Matrices ===")
     u = Matrix([[1.0, 2.0], [3.0, 4.0]])
     v = Matrix([[7.0, 4.0], [-2.0, 2.0]])
     u.add(v)
-    print("Addition :")
-    print(u)  # [[8.0, 6.0], [1.0, 6.0]]
+    print(u) 
 
-    u = Matrix([[1.0, 2.0], [3.0, 4.0]])
-    v = Matrix([[7.0, 4.0], [-2.0, 2.0]])
-    u.sub(v)
-    print("Soustraction :")
-    print(u)  # [[-6.0, -2.0], [5.0, 2.0]]
+    # u = Matrix([[1.0, 2.0], [3.0, 4.0]])
+    # v = Matrix([[7.0, 4.0], [-2.0, 2.0]])
+    # u.sub(v)
+    # print(u) 
 
-    u = Matrix([[1.0, 2.0], [3.0, 4.0]])
-    u.scl(2.0)
-    print("Scaling :")
-    print(u)  # [[2.0, 4.0], [6.0, 8.0]]
+    # u = Matrix([[1.0, 2.0], [3.0, 4.0]])
+    # u.scl(2.0)
+    
+    # print(u)

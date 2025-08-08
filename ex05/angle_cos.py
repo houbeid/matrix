@@ -17,7 +17,7 @@ class Vector:
     def norm_2(self) -> float:
         sum_sq = 0.0
         for x in self.data:
-            sum_sq = math.fma(x, x, sum_sq)  # x*x + sum_sq
+            sum_sq = math.fma(x, x, sum_sq)
         return self.sqrt(sum_sq)
 
     # Racine carrée sans sqrt ni pow
@@ -34,7 +34,7 @@ def dot_product(u: Vector, v: Vector) -> float:
         raise ValueError("Les vecteurs doivent être de même taille.")
     result = 0.0
     for a, b in zip(u, v):
-        result = math.fma(a, b, result)  # a*b + result
+        result = math.fma(a, b, result)
     return result
 
 def angle_cos(u: Vector, v: Vector) -> float:
@@ -49,8 +49,7 @@ def angle_cos(u: Vector, v: Vector) -> float:
 
     return dot_product(u, v) / (norm_u * norm_v)
 
-# Exemple
 if __name__ == "__main__":
     u = Vector([1.0, 2.0, 3.0])
     v = Vector([4.0, 5.0, 6.0])
-    print("Cos(u, v) =", angle_cos(u, v))
+    print("// ", angle_cos(u, v))

@@ -29,37 +29,33 @@ class Matrix:
     def __str__(self):
         return '\n'.join(str(row) for row in self.data)
 def main():
-    print("Exemple 1 :")
     u = Matrix.from_list([
         [1., -1.],
         [-1., 1.],
     ])
-    print(u.determinant())  # 0.0
+    print("// ", u.determinant())
 
-    print("\nExemple 2 :")
     u = Matrix.from_list([
         [2., 0., 0.],
         [0., 2., 0.],
         [0., 0., 2.],
     ])
-    print(u.determinant())  # 8.0
+    print("// ", u.determinant())
 
-    print("\nExemple 3 :")
     u = Matrix.from_list([
         [8., 5., -2.],
         [4., 7., 20.],
         [7., 6., 1.],
     ])
-    print(u.determinant())  # -174.0
+    print("// ", u.determinant())
 
-    print("\nExemple 4 :")
     u = Matrix.from_list([
         [8., 5., -2., 4.],
         [4., 2.5, 20., 4.],
         [8., 5., 1., 4.],
         [28., -4., 17., 1.],
     ])
-    print(u.determinant())  # 1032.0
+    print("// ", u.determinant())
 
 
 if __name__ == "__main__":

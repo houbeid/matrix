@@ -25,4 +25,4 @@ def dot_product(u: Vector, v: Vector) -> float:
 if __name__ == "__main__":
     u = Vector([1.0, 3.0, -5.0])
     v = Vector([4.0, -2.0, -1.0])
-    print("Produit scalaire :", dot_product(u, v))  # Doit afficher 3.0
+    print("// ", dot_product(u, v))

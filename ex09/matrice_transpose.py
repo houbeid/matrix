@@ -32,11 +32,7 @@ def main():
         [4.0, 5.0, 6.0]
     ])
 
-    print("Matrice originale :")
-    A.display()
-
     B = A.transpose()
-    print("\nMatrice transposée :")
     B.display()
 
 

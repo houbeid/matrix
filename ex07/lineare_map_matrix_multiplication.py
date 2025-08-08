@@ -30,36 +30,28 @@ class Matrix:
 
     def __str__(self):
         return "\n".join(str(row) for row in self.values)
-
-# -----------------------
-# ✅ EXEMPLES DE TEST
-# -----------------------
-
-# Test 1
 u = Matrix([
     [1., 0.],
     [0., 1.]
 ])
 v = [4., 2.]
-print(u.mul_vec(v))  # [4.0, 2.0]
+print(u.mul_vec(v))
 
-# # Test 2
-# u = Matrix([
-#     [2., 0.],
-#     [0., 2.]
-# ])
-# v = [4., 2.]
-# print(u.mul_vec(v))  # [8.0, 4.0]
 
-# # Test 3
-# u = Matrix([
-#     [2., -2.],
-#     [-2., 2.]
-# ])
-# v = [4., 2.]
-# print(u.mul_vec(v))  # [4.0, -4.0]
+u = Matrix([
+    [2., 0.],
+    [0., 2.]
+])
+v = [4., 2.]
+print(u.mul_vec(v))
 
-# Test 4
+u = Matrix([
+    [2., -2.],
+    [-2., 2.]
+])
+v = [4., 2.]
+print(u.mul_vec(v))
+
 u = Matrix([
     [1., 0.],
     [0., 1.]
@@ -68,26 +60,25 @@ v = Matrix([
     [1., 0.],
     [0., 1.]
 ])
-print(u.mul_mat(v))  # [[1.0, 0.0], [0.0, 1.0]]
+print(u.mul_mat(v))
 
-# # Test 5
-# u = Matrix([
-#     [1., 0.],
-#     [0., 1.]
-# ])
-# v = Matrix([
-#     [2., 1.],
-#     [4., 2.]
-# ])
-# print(u.mul_mat(v))  # [[2.0, 1.0], [4.0, 2.0]]
+u = Matrix([
+    [1., 0.],
+    [0., 1.]
+])
+v = Matrix([
+    [2., 1.],
+    [4., 2.]
+])
+print(u.mul_mat(v)) 
 
-# # Test 6
-# u = Matrix([
-#     [3., -5.],
-#     [6., 8.]
-# ])
-# v = Matrix([
-#     [2., 1.],
-#     [4., 2.]
-# ])
-# print(u.mul_mat(v))  # [[-14.0, -7.0], [44.0, 22.0]]
+
+u = Matrix([
+    [3., -5.],
+    [6., 8.]
+])
+v = Matrix([
+    [2., 1.],
+    [4., 2.]
+])
+print(u.mul_mat(v))

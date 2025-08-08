@@ -24,7 +24,6 @@ class Matrix:
         for i in range(n):
             pivot = mat[i][i]
             if pivot == 0:
-                # Try to swap with a row below
                 for j in range(i+1, n):
                     if mat[j][i] != 0:
                         mat[i], mat[j] = mat[j], mat[i]
@@ -34,12 +33,10 @@ class Matrix:
                 else:
                     raise ValueError("Matrix is singular and cannot be inverted.")
 
-            # Normalize the pivot row
             for j in range(n):
                 mat[i][j] /= pivot
                 inv[i][j] /= pivot
 
-            # Eliminate other rows
             for k in range(n):
                 if k != i:
                     factor = mat[k][i]
@@ -53,7 +50,6 @@ class Matrix:
         return '\n'.join(['[' + ', '.join(f"{val:.9f}" for val in row) + ']' for row in self.data])
 
 
-# === Main function for testing ===
 def main():
     matrices = [
         ([[1., 0., 0.], [0., 1., 0.], [0., 0., 1.]], "Identity"),
@@ -62,11 +58,9 @@ def main():
     ]
 
     for mat_data, label in matrices:
-        print(f"\n=== {label} Matrix ===")
         u = Matrix.from_list(mat_data)
         try:
             inv = u.inverse()
-            print("Inverse:")
             print(inv)
         except ValueError as e:
             print("Error:", e)

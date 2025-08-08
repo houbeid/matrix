@@ -4,8 +4,12 @@ class Matrix:
         self.rows = len(values)
         self.cols = len(values[0]) if values else 0
 
-    def rref(self):
-        A = [row[:] for row in self.values]
+    @classmethod
+    def from_list(cls, data):
+        return cls(data)
+
+    def row_echelon(self):
+        A = [row[:] for row in self.values]  # copie
         lead = 0
         rowCount = self.rows
         columnCount = self.cols
@@ -29,12 +33,15 @@ class Matrix:
                     lv = A[i][lead]
                     A[i] = [iv - lv * rv for rv, iv in zip(A[r], A[i])]
             lead += 1
-
         return Matrix(A)
 
-    def display(self):
-        for row in self.values:
-            print(["{:.7f}".format(val) for val in row])
+    def rank(self):
+        ref = self.row_echelon().values
+        rank_count = 0
+        for row in ref:
+            if any(abs(val) > 1e-12 for val in row):
+                rank_count += 1
+        return rank_count
 
     def __str__(self):
         return '\n'.join(
@@ -43,12 +50,24 @@ class Matrix:
 
 
 def main():
-    matrix = Matrix([[1., 2., 0., 0.],
-                     [2., 4., 0., 0.],
-                     [-1., 2., 1., 1.]])
+    matrices = [
+        ([[1., 0., 0.],
+          [0., 1., 0.],
+          [0., 0., 1.]], "Identité"),
 
-    rref_matrix = matrix.rref()
-    print(rref_matrix)
+        ([[1., 2., 0., 0.],
+          [2., 4., 0., 0.],
+          [-1., 2., 1., 1.]], "Dépendance linéaire"),
+
+        ([[8., 5., -2.],
+          [4., 7., 20.],
+          [7., 6., 1.],
+          [21., 18., 7.]], "4x3 exemple")
+    ]
+
+    for mat_data, label in matrices:
+        u = Matrix.from_list(mat_data)
+        print("// ", u.rank())
 
 
 if __name__ == "__main__":

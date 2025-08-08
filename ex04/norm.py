@@ -39,10 +39,9 @@ class Vector:
         return max_val
 
 
-# Exemple d’utilisation
 if __name__ == "__main__":
     v = Vector([3.0, -4.0, 2.0])
-    print("Norme 1 =", v.norm_1())      # 9.0
-    print("Norme 2 =", v.norm_2())      # ≈ 5.385
-    print("Norme ∞ =", v.norm_inf())    # 4.0
+    print("// ", v.norm_1())
+    print("// ", v.norm_2())
+    print("// ", v.norm_inf())
 

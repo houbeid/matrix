@@ -8,7 +8,6 @@ class Matrix:
         self.rows = len(values)
         self.cols = len(values[0])
         
-        # Vérification : toutes les lignes doivent avoir la même taille
         for row in values:
             if len(row) != self.cols:
                 raise ValueError("Toutes les lignes doivent avoir le même nombre de colonnes.")
@@ -32,26 +31,21 @@ def main():
         [4.0, 5.0, 6.0],
         [7.0, 8.0, 9.0]
     ])
-    print(A)
-    print("Trace :", A.trace())  # ➜ 1 + 5 + 9 = 15
+    print("// ", A.trace())
 
-    print("\nExemple 2 :")
     B = Matrix([
         [2.0, -1.0],
         [4.5, 3.0]
     ])
-    print(B)
-    print("Trace :", B.trace())  # ➜ 2 + 3 = 5
+    print("// ", B.trace())
 
-    print("\nExemple 3 (matrice non carrée) :")
     try:
         C = Matrix([
             [1.0, 2.0],
             [3.0, 4.0],
             [5.0, 6.0]
         ])
-        print(C)
-        print("Trace :", C.trace())  # Doit lever une erreur
+        print("// ", C.trace())  # Doit lever une erreur
     except ValueError as e:
         print("Erreur :", e)
 

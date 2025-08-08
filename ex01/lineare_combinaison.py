@@ -25,11 +25,10 @@ def linear_combination(vectors: List[Vector], scalars: List[float]) -> Vector:
 
     for v, λ in zip(vectors, scalars):
         for i in range(dim):
-            result[i] = math.fma(λ, v[i], result[i])  # fused multiply-add
+            result[i] = math.fma(λ, v[i], result[i]) 
     return Vector(result)
 
 
-# ---------------- Main function (tests) ---------------- #
 
 def main():
     print("=== Test Combinaison Linéaire avec FMA ===")
@@ -41,11 +40,11 @@ def main():
     v2 = Vector([0.0, 10.0, -100.0])
 
     result1 = linear_combination([e1, e2, e3], [10.0, -2.0, 0.5])
-    print("Résultat 1 :")
+    print("// ")
     print(result1)
 
     result2 = linear_combination([v1, v2], [10.0, -2.0])
-    print("Résultat 2 :")
+    print("// ")
     print(result2)
 
 
