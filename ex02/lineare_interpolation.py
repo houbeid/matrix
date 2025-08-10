@@ -5,7 +5,6 @@ Number = Union[int, float]
 
 class Vector:
     """Classe représentant un vecteur mathématique."""
-
     def __init__(self, values: List[Number]):
         self.values = values
 
@@ -30,24 +29,27 @@ class Vector:
 
 
 class Matrix:
-    """Classe représentant une matrice composée de vecteurs."""
-
-    def __init__(self, rows: List[Vector]):
+    """Classe représentant une matrice (liste de listes de nombres)."""
+    def __init__(self, rows: List[List[Number]]):
         if not rows:
             raise ValueError("La matrice ne peut pas être vide.")
-        row_length = len(rows[0].values)
-        if not all(len(row.values) == row_length for row in rows):
+        row_length = len(rows[0])
+        if not all(len(row) == row_length for row in rows):
             raise ValueError("Toutes les lignes doivent avoir la même taille.")
         self.rows = rows
 
     def lerp(self, other: 'Matrix', t: float) -> 'Matrix':
         """Interpolation entre deux matrices."""
-        if len(self.rows) != len(other.rows):
-            raise ValueError("Les matrices doivent avoir le même nombre de lignes.")
-        return Matrix([self.rows[i].lerp(other.rows[i], t) for i in range(len(self.rows))])
+        if len(self.rows) != len(other.rows) or len(self.rows[0]) != len(other.rows[0]):
+            raise ValueError("Les matrices doivent avoir la même taille.")
+        return Matrix([
+            [math.fma(t, other.rows[i][j] - self.rows[i][j], self.rows[i][j])
+             for j in range(len(self.rows[0]))]
+            for i in range(len(self.rows))
+        ])
 
     def __repr__(self):
-        return "[" + ",\n ".join(str(row.values) for row in self.rows) + "]"
+        return "[" + ",\n ".join(str(row) for row in self.rows) + "]"
 
 
 def main():
@@ -66,8 +68,8 @@ def main():
     print("// ", u_vec.lerp(v_vec, 0.3))
 
     # ---- MATRICE ----
-    u_mat = Matrix([Vector([2., 1.]), Vector([3., 4.])])
-    v_mat = Matrix([Vector([20., 10.]), Vector([30., 40.])])
+    u_mat = Matrix([[2., 1.], [3., 4.]])
+    v_mat = Matrix([[20., 10.], [30., 40.]])
     print("// ", u_mat.lerp(v_mat, 0.5))
 
 
